@@ -15,11 +15,12 @@
 			<property name="jakarta.persistence.jdbc.password" value="" />
 			<property
 				name="jakarta.persistence.schema-generation.database.action"
-				value="create" />
+				value="none" />
 			<property name="jakarta.persistence.dialect"
 				value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.show_sql" value="true" />
-		</properties>
+            <property name="hibernate.generate_statistics" value="true"/>
+        </properties>
 	</persistence-unit>
 	<persistence-unit name="prod" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -32,12 +33,13 @@
 			<property name="jakarta.persistence.jdbc.password" value="" />
 			<property
 				name="jakarta.persistence.schema-generation.database.action"
-				value="update" />
+				value="drop-and-create" />
 			<property name="jakarta.persistence.dialect"
 				value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.generate_statistics" value="true"/>
 
-		</properties>
+        </properties>
 	</persistence-unit>
 
 	<persistence-unit name="mysql">
@@ -52,7 +54,7 @@
 			<property name="jakarta.persistence.jdbc.password" value="tlc" />
 			<property
 				name="jakarta.persistence.schema-generation.database.action"
-				value="update" />
+				value="drop-and-create" />
 			<property name="jakarta.persistence.dialect"
 				value="org.hibernate.dialect.MySQL8Dialect" />
 			<property name="hibernate.show_sql" value="true" />
@@ -61,7 +63,8 @@
 			<property name="hibernate.c3p0.timeout" value="300" />
 			<property name="hibernate.c3p0.max_statements" value="50" />
 			<property name="hibernate.c3p0.idle_test_period" value="3000" />
-		</properties>
+            <property name="hibernate.generate_statistics" value="true"/>
+        </properties>
 	</persistence-unit>
 
 </persistence>
