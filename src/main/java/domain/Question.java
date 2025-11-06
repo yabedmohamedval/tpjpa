@@ -26,6 +26,17 @@ public abstract class Question {
     private int timeLimitSeconds = 20;
     @Column(nullable = false)
     protected Integer points = 100;
+    @Transient
+    public String getQType() {
+        if (this instanceof TrueFalseQuestion) return "TF";
+        if (this instanceof MCQQuestion)      return "MCQ";
+        if (this instanceof ShortTextQuestion) return "SHORT";
+        return "UNKNOWN";
+    }
+    @Transient
+    public String getType() {  // alias pour EL si besoin
+        return getQType();
+    }
 
     @ManyToOne(optional=false,  fetch = FetchType.LAZY)
     @JoinColumn(name = "quiz_id")

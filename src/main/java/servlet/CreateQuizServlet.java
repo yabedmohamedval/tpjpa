@@ -8,9 +8,13 @@ import web.dto.*;
 import jpa.EntityManagerHelper;
 import jakarta.persistence.EntityManager;
 import domain.*;
+import service.QuizService;
+
 
 @WebServlet(urlPatterns = {"/quizzes/new"})
 public class CreateQuizServlet extends HttpServlet {
+    private final QuizService quizService = new QuizService();
+
 
     @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -104,7 +108,7 @@ public class CreateQuizServlet extends HttpServlet {
         resp.sendRedirect(req.getContextPath() + "/quizzes/new");
     }
 
-    private void persistDraft(DraftQuiz dq, HttpServletRequest req) throws ServletException {
+     /* private void persistDraft(DraftQuiz dq, HttpServletRequest req) throws ServletException {
         EntityManager em = EntityManagerHelper.getEntityManager();
         var tx = em.getTransaction(); tx.begin();
         try {
@@ -156,7 +160,14 @@ public class CreateQuizServlet extends HttpServlet {
             if (tx.isActive()) tx.rollback();
             throw new ServletException(e);
         }
-    }
+    }*/
+     private void persistDraft(DraftQuiz dq, HttpServletRequest req) throws ServletException {
+         try {
+             quizService.createFromDraft(dq, "teacher1");
+         } catch (RuntimeException e) {
+             throw new ServletException(e);
+         }
+     }
 
     // helpers
     private static boolean notBlank(String s){ return s!=null && !s.isBlank(); }

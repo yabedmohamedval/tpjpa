@@ -7,6 +7,10 @@ import java.time.Instant;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedQuery(
+        name = "AppUser.findByUsername",
+        query = "select u from AppUser u where u.username = :username"
+)
 @Entity
 @Table(name = "app_user")
 public class AppUser {

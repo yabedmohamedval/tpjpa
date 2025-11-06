@@ -155,6 +155,8 @@
             <form method="post" action="${pageContext.request.contextPath}/quizzes/new">
                 <input type="hidden" name="action" value="reset"/>
                 <button class="btn btn-secondary" type="submit">Réinitialiser le brouillon</button>
+                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/quizzes">Annuler</a>
+
             </form>
         </div>
     </div>

@@ -38,12 +38,12 @@ public class Quiz {
     private List<Question> questions = new ArrayList<>();
 
     public void addQuestion(Question q) {
-        q.setQuiz(this);            // côté propriétaire (ManyToOne)
-        this.questions.add(q);      // côté inverse (OneToMany)
+        q.setQuiz(this);
+        this.questions.add(q);
     }
 
     public void removeQuestion(Question q) {
-        this.questions.remove(q);   // enlève du côté inverse
-        q.setQuiz(null);            // coupe la FK (orphanRemoval => delete)
+        this.questions.remove(q);
+        q.setQuiz(null);
     }
 }

@@ -1,0 +1,6 @@
+{
+"urls": [
+{ "url": "/api/openapi", "name": "Kahoot API" }
+],
+"validatorUrl": null
+}
